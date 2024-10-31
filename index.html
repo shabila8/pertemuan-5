@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<body>
+    <h1>daftar tugas harian</h1>
+    <form>
+        <input type="text" id="taskInput" required>
+        <button onclick="newForm()">submit</button>
+    </form>
+    <ul id="list"></ul>
+</body>
+
+<script>
+    function newForm(){
+        var taskInput = document.getElementById("taskInput");
+        var newList = document.getElementById("list");
+        
+        var textList = document.createElement("li");
+        var taskText = document.createElement('p');
+        taskText.textContent = taskInput.value;
+        textList.appendChild(taskText);
+        var editButton = document.createElement('button');
+        button = document.createTextNode('edit');
+        editButton.appendChild(button);//sebelumnya lu ("button")
+        editButton.onclick = function(){
+            var newTask = prompt('edit teks: ', taskText.textContent);
+            if(newTask){
+                taskText.textContent = newTask; //var prompt ku ubah jadi newTask biar bacanya ga pusign wkwk 
+            }
+        };
+        textList.appendChild(editButton);
+
+        var dltButton = document.createElement('button');
+        buttonHapus = document.createTextNode('hapus');
+        dltButton.appendChild(buttonHapus); //sama kaya keliruan yg sblmnya, harusnya gapakai kutip
+        dltButton.onclick = function(){
+            newList.removeChild(textList);
+        };
+
+        textList.appendChild(dltButton);//typo, sblmnya kamu teksList harusnya textList MALES BGT CUMAN KARENA TYPO DOANG :)
+        
+        newList.appendChild(textList);
+        taskInput.value = '';
+    }
+</script>
+</body>
+</html>
